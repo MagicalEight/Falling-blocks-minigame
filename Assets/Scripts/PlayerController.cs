@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         float halfPlayerWidth = transform.localScale.x / 2f;
-        screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize - halfPlayerWidth; // 这里的 size 相当于屏幕长度的一半
+        screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth; // 这里的 size 相当于屏幕长度的一半
     }
 
     // Update is called once per frame
@@ -26,12 +26,12 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.x < -screenHalfWidthInWorldUnits)
         {
-            transform.position = new Vector2(-screenHalfWidthInWorldUnits, transform.position.y);
+            transform.position = new Vector2(screenHalfWidthInWorldUnits, transform.position.y);
         }
         
         if (transform.position.x > screenHalfWidthInWorldUnits)
         {
-            transform.position = new Vector2(screenHalfWidthInWorldUnits, transform.position.y);
+            transform.position = new Vector2(-screenHalfWidthInWorldUnits, transform.position.y);
         }
     }
 
